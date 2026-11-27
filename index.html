@@ -2313,8 +2313,8 @@
             <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden mb-1"><div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all" style="width:${hpPct}%"></div></div>
             <div class="flex justify-between text-[11px] text-slate-300 font-medium mb-2"><span>HP ${hero.hp}/${hero.maxHp}</span>${hero.bleed > 0 ? `<span data-tooltip="출혈" class="cursor-help text-rose-400">🩸${hero.bleed}</span>` : ''}</div>
             <button data-basic-hero="${hero.id}" ${canBasic ? '' : 'disabled'} class="btn-basic w-full min-h-[42px] text-left p-2 rounded-lg border text-[11px] transition ${canBasic ? 'bg-slate-900/90 hover:bg-slate-800 border-amber-500/40 cursor-pointer' : 'bg-slate-900/40 border-slate-800 text-slate-500 cursor-not-allowed'}">
-              <div class="flex items-center justify-between font-semibold ${canBasic ? 'text-amber-300' : 'text-slate-500'}"><span>${hero.basicSkill.name}${getBasicLevel(hero.basicSkill.id) > 0 ? ` +${getBasicLevel(hero.basicSkill.id)}` : ''}</span><span class="px-1.5 rounded bg-amber-500/20 text-[10px]">${hero.basicSkill.cost}</span></div>
-              <div class="text-[10px] text-slate-400 mt-0.5 leading-tight">${hero.dead ? '잠김' : hero.basicUsed ? '사용 완료' : hero.basicSkill.desc}</div>
+              <div class="flex items-center justify-between font-semibold ${canBasic ? 'text-amber-300' : 'text-slate-500'}"><span>${hero.disarmed ? '🔧 비상 재장전' : hero.basicSkill.name}${getBasicLevel(hero.basicSkill.id) > 0 ? ` +${getBasicLevel(hero.basicSkill.id)}` : ''}</span><span class="px-1.5 rounded bg-amber-500/20 text-[10px]">${hero.basicSkill.cost}</span></div>
+              <div class="text-[10px] text-slate-400 mt-0.5 leading-tight">${hero.dead ? '잠김' : hero.basicUsed ? '사용 완료' : hero.disarmed ? '무장 복구 + 방어도 4 획득' : hero.basicSkill.desc}</div>
             </button>
           </div>
         </div>
