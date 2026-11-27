@@ -559,6 +559,12 @@
     }
   ];
 
+  const COMMANDER_ORDERS = [
+    { id: 'supply', name: '긴급 에너지 보급', badge: '에너지 +2', desc: '전투당 1회 즉시 공통 에너지 +2 획득' },
+    { id: 'scan', name: '궤도 정밀 스캔', badge: '드로우 +2', desc: '전투당 1회 즉시 카드 2장 드로우' },
+    { id: 'strike', name: '궤도 포격 지원', badge: '전체 8피해', desc: '전투당 1회 적 전체 피해 8 + 약화 1 부여' }
+  ];
+
   const RELIC_POOL = [
     { id: 'watch', name: '전술 크로노미터', icon: '⏱️', desc: '매 전투 첫 턴 공통 에너지 +1' },
     { id: 'manual', name: '합동 교범칩', icon: '📘', desc: '매 턴 처음 쓰는 공용 카드 코스트 -1' },
@@ -1386,7 +1392,7 @@
         dead: false,
         basicUsed: false,
         bleed: 0,
-        basicSkill: h.basicOptions[meta.basicChoice[h.id]]
+        basicSkill: h.basicOptions[(meta.basicChoice && meta.basicChoice[h.id]) || 0] || h.basicOptions[0]
       })),
       relics: [],
       bag: [], // { id, name, icon, gold, commonMat, rareMat, safe: false }
@@ -1848,7 +1854,7 @@
     } else if (enemy.id === 'b1' && enemy.hp <= enemy.maxHp / 2 && !enemy.spawnedSpore) {
       enemy.spawnedSpore = true;
       const alive = getAliveParty();
-      const tId = alive.length ? alive[0].id : 'warrior';
+      const tId = alive.length ? alive[0].id : 'vanguard';
       const spore = {
         id: 'spore_' + Date.now(),
         name: '맹독 포자체',
